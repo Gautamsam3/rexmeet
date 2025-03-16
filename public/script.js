@@ -51,9 +51,9 @@ const myPeer = new Peer(storedPeerId, {
       { urls: 'stun:stun2.l.google.com:19302' },
       // Add TURN servers for better connectivity across networks
       {
-        urls: 'turn:numb.viagenie.ca',
-        credential: 'muazkh',
-        username: 'webrtc@live.com'
+        urls: 'turn:turn.bistri.com:80',
+        credential: 'homeo',
+        username: 'homeo'
       },
       {
         urls: 'turn:turn.anyfirewall.com:443?transport=tcp',
