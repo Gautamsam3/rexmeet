@@ -39,7 +39,7 @@ const isLocalhost = window.location.hostname === 'localhost' ||
 
 // Create Peer connection with appropriate configuration for separate PeerJS server
 const myPeer = new Peer(storedPeerId, {
-  host: isLocalhost ? window.location.hostname : 'rexpeer.onrender.com',
+  host: isLocalhost ? window.location.hostname : PEER_HOST,
   port: isLocalhost ? '3002' : '443', // Use 443 in production
   path: '/', // Root path for dedicated PeerJS server
   secure: true, // Always use secure connection for production PeerJS server
@@ -49,24 +49,97 @@ const myPeer = new Peer(storedPeerId, {
       { urls: 'stun:stun.l.google.com:19302' },
       { urls: 'stun:stun1.l.google.com:19302' },
       { urls: 'stun:stun2.l.google.com:19302' },
-      // Add TURN servers for better connectivity across networks
+      { urls: 'stun:stun3.l.google.com:19302' },
+      { urls: 'stun:stun4.l.google.com:19302' },
+      { urls: 'stun:stun.ekiga.net' },
+      { urls: 'stun:stun.ideasip.com' },
+      { urls: 'stun:stun.schlund.de' },
+      { urls: 'stun:stun.stunprotocol.org:3478' },
+      { urls: 'stun:stun.voiparound.com' },
+      { urls: 'stun:stun.voipbuster.com' },
+
       {
-        urls: 'turn:turn.bistri.com:80',
-        credential: 'homeo',
-        username: 'homeo'
+        urls: 'turn:relay1.expressturn.com:80',
+        username: 'ef7VALMT3UUFRPLLFS',
+        credential: 'zgkQrpoMXmS2pPcl'
       },
       {
-        urls: 'turn:turn.anyfirewall.com:443?transport=tcp',
-        credential: 'webrtc',
-        username: 'webrtc'
+        urls: 'turn:relay1.expressturn.com:443',
+        username: 'ef7VALMT3UUFRPLLFS',
+        credential: 'zgkQrpoMXmS2pPcl'
+      },
+      {
+        urls: 'turn:relay1.expressturn.com:3478',
+        username: 'ef7VALMT3UUFRPLLFS',
+        credential: 'zgkQrpoMXmS2pPcl'
+      },
+      {
+        urls: 'turn:relay2.expressturn.com:3478',
+        username: 'ef7VALMT3UUFRPLLFS',
+        credential: 'zgkQrpoMXmS2pPcl'
+      },
+      {
+        urls: 'turn:relay3.expressturn.com:3478',
+        username: 'ef7VALMT3UUFRPLLFS',
+        credential: 'zgkQrpoMXmS2pPcl'
+      },
+      {
+        urls: 'turn:relay4.expressturn.com:3478',
+        username: 'ef7VALMT3UUFRPLLFS',
+        credential: 'zgkQrpoMXmS2pPcl'
+      },
+      {
+        urls: 'turn:relay5.expressturn.com:3478',
+        username: 'ef7VALMT3UUFRPLLFS',
+        credential: 'zgkQrpoMXmS2pPcl'
+      },
+      {
+        urls: 'turn:relay6.expressturn.com:3478',
+        username: 'ef7VALMT3UUFRPLLFS',
+        credential: 'zgkQrpoMXmS2pPcl'
+      },
+      {
+        urls: 'turn:relay7.expressturn.com:3478',
+        username: 'ef7VALMT3UUFRPLLFS',
+        credential: 'zgkQrpoMXmS2pPcl'
+      },
+      {
+        urls: 'turn:relay8.expressturn.com:3478',
+        username: 'ef7VALMT3UUFRPLLFS',
+        credential: 'zgkQrpoMXmS2pPcl'
+      },
+      {
+        urls: 'turn:relay9.expressturn.com:3478',
+        username: 'ef7VALMT3UUFRPLLFS',
+        credential: 'zgkQrpoMXmS2pPcl'
+      },
+      {
+        urls: 'turn:relay10.expressturn.com:3478',
+        username: 'ef7VALMT3UUFRPLLFS',
+        credential: 'zgkQrpoMXmS2pPcl'
+      },
+      {
+        urls: 'turn:relay11.expressturn.com:3478',
+        username: 'ef7VALMT3UUFRPLLFS',
+        credential: 'zgkQrpoMXmS2pPcl'
+      },
+      {
+        urls: 'turn:relay12.expressturn.com:3478',
+        username: 'ef7VALMT3UUFRPLLFS',
+        credential: 'zgkQrpoMXmS2pPcl'
+      },
+      {
+        urls: 'turn:relay13.expressturn.com:3478',
+        username: 'ef7VALMT3UUFRPLLFS',
+        credential: 'zgkQrpoMXmS2pPcl'
       }
     ],
-    iceTransportPolicy: 'all',
+    iceTransportPolicy: 'relay',
     sdpSemantics: 'unified-plan',
-    // Optimize for lower latency
-    iceCandidatePoolSize: 10, // Increase candidate gathering speed
-    bundlePolicy: 'max-bundle', // Bundle all media tracks
-    rtcpMuxPolicy: 'require' // Require RTCP multiplexing
+    iceCandidatePoolSize: 10,
+    bundlePolicy: 'max-bundle',
+    rtcpMuxPolicy: 'require',
+    tcpMux: true
   }
 })
 
